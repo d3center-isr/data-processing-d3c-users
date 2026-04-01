@@ -1,0 +1,13 @@
+March 31, 2026
+
+Use case: Youqi Yang (Phd Student of Walter Dempsey and Ashkan Ertefaei)
+
+A record of the exact data transformations to take MARS MRT curated datasets
+into a form that is more easily usable for this particular use case can be found
+in the master-workflow.R code in the directory
+working-with-ema-and-tracked-app-usage. 
+
+This use case required the same participant decision points as in the MARS
+primary aim paper. In addition to EMA data, tracked app usage variables
+were a particular interest of this use case. EMA data and visit 1 and 4 data
+were also made available.
