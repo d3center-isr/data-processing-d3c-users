@@ -2,7 +2,7 @@ library(dplyr)
 library(lubridate)
 library(readxl)
 
-path_ema <- "O:/d3c-BIDS/MARS/04 - Original Data/2025-6-25-MARS Curated Data/EMA/Release v2.0.0/Data for analysis (original data)"
+path_ema <- "O:/d3c-BIDS/MARS/04 - Original Data/2025-6-25-MARS Curated Data/EMA/Release v2.0.0/Data for analysis"
 
 dat_primary_aim <- readRDS(file.path(path_ema, "data_final.RDS"))
 

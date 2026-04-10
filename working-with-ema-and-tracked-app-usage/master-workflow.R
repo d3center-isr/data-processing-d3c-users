@@ -208,7 +208,7 @@ colnames_v4_questionnaire <- colnames(v4_questionnaire)
 common_names <- intersect(colnames_v1_questionnaire, colnames_v4_questionnaire)
 common_names <- common_names[common_names != "record_id" & common_names != "mars_id"]
 
-#  mars_id and record_id uniquely identify each observation in the study visit questionnaire.
+# mars_id and record_id uniquely identify each observation in the study visit questionnaire.
 # Thus, merging the Visit 1 and Visit 4 questionnaires will be based on mars_id and record_id
 # Note that some (but not all) items at visit 1 were assessed again Visit 4; such items
 # will have identical column names across the Visit 1 and Visit 4 datasets. Thus we will
@@ -412,6 +412,8 @@ dat_summary_missing_demogs <- merged_ema_and_app_tracked_and_visit_data %>%
             n_missing_partner_status = sum(is_missing_partner_status),
             n_missing_income = sum(is_missing_income))
 
+print(dat_summary_missing_demogs)
+
 # > dat_summary_missing_demogs
 # # A tibble: 1 × 8
 #             n_participants          n_participants_with_missing_demogs    n_missing_age n_missing_gender n_missing_race_and_ethnicity n_missing_baseline_tobacco_history n_missing_partner_status n_missing_income
@@ -426,6 +428,8 @@ dat_summary_demogs_continuous <- merged_ema_and_app_tracked_and_visit_data %>%
             sd_baseline_tobacco_history = sd(baseline_tobacco_history, na.rm = TRUE),
             m_income = mean(income_val, na.rm = TRUE),
             sd_income = sd(income_val, na.rm = TRUE))
+
+print(dat_summary_demogs_continuous)
 
 # > dat_summary_demogs_continuous
 # # A tibble: 1 × 6
@@ -450,6 +454,8 @@ dat_summary_demogs_binary <- merged_ema_and_app_tracked_and_visit_data %>%
             n_has_partner = sum(has_partner, na.rm = TRUE),
             pct_has_partner = mean(has_partner, na.rm = TRUE) * 100)
 
+print(dat_summary_demogs_binary)
+
 # > dat_summary_demogs_binary
 # # A tibble: 1 × 14
 #       n_male pct_male n_latino pct_latino n_not_latino pct_not_latino n_not_latino_and_black pct_not_latino_and_black n_not_latino_and_other pct_not_latino_and_other n_not_latino_and_white pct_not_latino_and_white n_has_partner pct_has_partner
@@ -460,6 +466,8 @@ dat_summary_income_tabulation <- merged_ema_and_app_tracked_and_visit_data %>%
   filter(decision_point == 10) %>%
   group_by(income_val) %>% 
   summarise(num_participants = n())
+
+print(dat_summary_income_tabulation)
 
 # > dat_summary_income_tabulation
 # # A tibble: 12 × 2
@@ -481,7 +489,7 @@ dat_summary_income_tabulation <- merged_ema_and_app_tracked_and_visit_data %>%
 
 ################################################
 # Relevant columns for trying to replicate the primary aim analysis
-dat_analysis <- merged_ema_and_app_tracked_and_visit_data %>%
+dat_for_analysis <- merged_ema_and_app_tracked_and_visit_data %>%
   select(mars_id, participant_id,
          decision_point, 
          # Baseline control variables:
@@ -512,7 +520,7 @@ dat_analysis <- merged_ema_and_app_tracked_and_visit_data %>%
 # Change to TRUE if saving the dataset
 if(FALSE){
   my_path <- "O:/d3c-BIDS/MARS/05 - Manipulated Data/Derived Engagement Measures"  # You can change this to your relevant file path
-  saveRDS(dat_analysis, file = file.path(my_path, "dat_analysis.rds"))
+  saveRDS(dat_for_analysis, file = file.path(my_path, "dat_for_analysis.rds"))
 }
 
 ################################################
@@ -604,6 +612,8 @@ rrLB95 <- exp(dat_result_causal[["95% LCL"]])
 rrUB95 <- exp(dat_result_causal[["95% UCL"]])
 
 dat_exp_scale <- data.frame(exp_estimates = exp_estimates, rrLB95 = c(rrLB95), rrUB95 = c(rrUB95))
+
+print(dat_exp_scale)
 
 # This is the output you should get
 #> dat_exp_scale
