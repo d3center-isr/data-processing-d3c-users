@@ -525,10 +525,6 @@ library(MRTAnalysis)
 library(dplyr)
 library(tidyr) # Only used for replace_na()
 
-
-my_path <- "O:/d3c-BIDS/MARS/05 - Manipulated Data/Derived Engagement Measures"  # You can change this to your relevant file path
-dat_for_analysis <- readRDS(file.path(my_path, "dat_analysis.rds"))
-
 my_list <- list(Y = -1,
                 coinflip = -1,
                 hour_coinflip_local = -1, 

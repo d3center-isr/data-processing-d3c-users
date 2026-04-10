@@ -15,7 +15,7 @@ This repository was developed at the University of Michigan, Institute for Socia
 #### Contributors:
 
 -   Jamie Yap [(@jamieyap)](https://github.com/jamieyap)
--   John Dziak [@dziakj1](https://github.com/dziakj1)
+-   John Dziak [(@dziakj1)](https://github.com/dziakj1)
 
 #### This work is based in part on the following projects, libraries and/or studies:
 
