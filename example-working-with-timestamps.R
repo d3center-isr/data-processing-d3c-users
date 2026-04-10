@@ -9,7 +9,7 @@
 # (e.g., computing seconds elapsed between two events)
 # but can be hard to interpret. Thus, in some cases, you may want to convert
 # UNIX time to a format a human can understand, perhaps to enable quick spot checks.
-# Here is one example of how to do so with the ts_emi-resp variable.
+# Here is one example of how to do so with the ts_emi_resp variable.
 # Because the computer system recorded this event in terms of milliseconds and
 # the with_tz function in the lubridate package expects UNIX time in seconds, 
 # we divide by 1000.
