@@ -123,28 +123,9 @@ nrow(dat_primary_aim_another_subset_app_tracked_cols) # Should be 4752
 
 intersect(x = colnames(dat_primary_aim_another_subset), y = colnames(dat_primary_aim_another_subset_app_tracked_cols)) # You should get "mars_id" and "decision_point"
 
-merged_ema_and_app_tracked <- left_join(x = dat_primary_aim_another_subset,
-                                        y = dat_primary_aim_another_subset_app_tracked_cols,
-                                        by = join_by("mars_id" == "mars_id",
-                                                     "decision_point" == "decision_point"))
-
-# After merging, see how many participants and rows you have
-merged_ema_and_app_tracked %>%
-  .[["mars_id"]] %>%
-  unique(.) %>%
-  length(.) # What is this number now? You should get 99
-
-merged_ema_and_app_tracked %>% 
-  nrow(.) # What is this number now? You should get 4752
-
-merged_ema_and_app_tracked %>% 
-  filter(eligibility == 1) %>%
-  nrow(.) # What is this number now? You should get 3858
-
 dat_primary_aim_another_subset %>%
   group_by(eligibility, coinflip) %>%
   summarise(n_decision_points = n())
-
 # You should get the following output:
 #             eligibility     coinflip    n_decision_points
 #             <dbl>           <dbl>       <int>
@@ -162,6 +143,24 @@ dat_primary_aim_another_subset %>%
 # 2           1               0                 0                 1934
 # 3           1               0                 1                 997
 # 4           1               1                 0                 927
+
+merged_ema_and_app_tracked <- left_join(x = dat_primary_aim_another_subset,
+                                        y = dat_primary_aim_another_subset_app_tracked_cols,
+                                        by = join_by("mars_id" == "mars_id",
+                                                     "decision_point" == "decision_point"))
+
+# After merging, see how many participants and rows you have
+merged_ema_and_app_tracked %>%
+  .[["mars_id"]] %>%
+  unique(.) %>%
+  length(.) # What is this number now? You should get 99
+
+merged_ema_and_app_tracked %>% 
+  nrow(.) # What is this number now? You should get 4752
+
+merged_ema_and_app_tracked %>% 
+  filter(eligibility == 1) %>%
+  nrow(.) # What is this number now? You should get 3858
 
 # Change to TRUE if saving the dataset
 if(FALSE){
