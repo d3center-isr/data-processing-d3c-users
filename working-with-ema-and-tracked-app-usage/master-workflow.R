@@ -254,8 +254,7 @@ screening_questionnaire <- screening_questionnaire %>%
          race___2, # Black or African American
          race___3, # Asian
          race___4, # Native Hawaiian or other pacific islander
-         race___5, # American Indian or Alaska Native 
-         race___99) # Unknown or refuse to answer
+         race___5) # American Indian or Alaska Native 
 
 merged_ema_and_app_tracked_and_visit_data <- left_join(x = merged_ema_and_app_tracked_and_visit_data, 
                                                        y = screening_questionnaire,
